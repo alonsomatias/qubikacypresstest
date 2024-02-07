@@ -23,3 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('visitHomePage', () => {
+    cy.visit('/');
+    cy.url().should('eq', Cypress.config('baseUrl'));
+    cy.get('a[class="logo"]').should('be.visible');
+})
